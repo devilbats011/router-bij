@@ -1,0 +1,38 @@
+
+
+/* property-value */
+
+.flex {
+    display: flex;
+
+    &-justify-center,&J-center {
+      @extend .flex;
+      justify-content: center;
+    }
+}
+
+.item-center{
+    align-items: center;
+}
+
+.b-black {
+    border: 1px solid #000;
+}
+.b-123 {
+    border: 1px solid #123;
+}
+
+/* classname-property-value*/
+.container
+{
+    &-mx-20 {
+        margin:0 20%;
+    }
+}
+
+.p {
+    &y-1rem {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+}
