@@ -2,6 +2,8 @@
 import "animate.css";
 import React from "react";
 import "./router-styles.scss";
+import Upload from "components/Upload/Upload";
+
 
 import {
   Route,
@@ -14,11 +16,13 @@ import { CSSTransition } from "react-transition-group";
 
 /* default render component home because path: "/" */
 function RouterTransitionGroup({routes}) {
+  const addedComp = [{ path: "/upload", name: "Upload", Component: Upload }]
+  const mixRoutes = [  ...routes,...addedComp ]
   let location = useLocation();
   return (
       <div>
         <div className="animated-nav">
-          {routes.map((route) => {
+          {mixRoutes.map((route) => {
             return (
               <Link
                 key={route.path}
@@ -32,7 +36,7 @@ function RouterTransitionGroup({routes}) {
         </div>
 
         <main className="animated-main">
-        {routes.map(({ path, Component }) => (
+        {mixRoutes.map(({ path, Component }) => (
             <Route key={path} exact path={path}>
               {({ match }) => (
                 <CSSTransition
@@ -42,7 +46,6 @@ function RouterTransitionGroup({routes}) {
                   unmountOnExit
                 >
                   <div className="page">
-                    {  console.log("match", match)  }
                     {  console.log("location", location)  }
                     <Component match={match} />
                   </div>

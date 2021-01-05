@@ -6,6 +6,7 @@ import React from "react";
 import { AnimatePresence,motion } from "framer-motion";
 
 function RouterFrameMotion({ routes }) {
+
   const pageTransition = {
     enter: {
       opacity: 1
@@ -29,7 +30,7 @@ function RouterFrameMotion({ routes }) {
       </div>
       <main className="animated-main">
         <article className="page ">
-          <AnimatePresence>
+          <AnimatePresence exitBeforeEnter>
             <Switch>
               {routes.map(({ path, name, Component }) => (
                 <Route key={loc.key} exact path={path} >
